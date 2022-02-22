@@ -1,10 +1,18 @@
+name: "Hey"
+
 on:
   push:
 
 jobs:
   caller:
-    uses: wilfwilson/experimenting/.github/workflows/called.yml@master
-    with:
-      container: master
-      suite: testinstall
-      pkg: digraphs
+    strategy:
+      matrix:
+        container:
+          - master
+          - stable-4.11
+    steps:
+      - uses: wilfwilson/experimenting/.github/workflows/called.yml@master
+        with:
+          container: ${{ matrix.container }}
+          suite: testinstall
+          pkg: digraphs
