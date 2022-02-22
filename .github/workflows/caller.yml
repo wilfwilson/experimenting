@@ -5,13 +5,14 @@ on:
 
 jobs:
   caller:
-    strategy:
-      matrix:
-        container:
-          - master
-          - stable-4.11
+    #strategy:
+    #  matrix:
+    #    container:
+    #      - master
+    #      - stable-4.11
     uses: wilfwilson/experimenting/.github/workflows/called.yml@master
     with:
-      container: ${{ matrix.container }}
+      container: >-
+        ["master", "stable-4.11"]
       suite: testinstall
       pkg: digraphs
