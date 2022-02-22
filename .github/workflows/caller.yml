@@ -3,8 +3,8 @@ on:
 
 jobs:
   caller:
-    uses: wilfwilson/experimenting/.github/workflows/called.yml@master
+    uses: wilfwilson/experimenting/.github/workflows/called.yml
     with:
       container: master
-      test-suite: testinstall
+      suite: testinstall
       pkg: digraphs

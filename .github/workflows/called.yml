@@ -6,7 +6,9 @@ on:
       container:
         required: true
         type: string
-      test-suite:
+      suite:
+        required: true
+        type: string
       pkg:
         required: true
         type: string
