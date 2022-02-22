@@ -3,7 +3,7 @@ on:
 
 jobs:
   caller:
-    uses: wilfwilson/experimenting/.github/workflows/called.yml
+    uses: wilfwilson/experimenting/.github/workflows/called.yml@master
     with:
       container: master
       suite: testinstall
