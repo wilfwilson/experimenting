@@ -15,7 +15,7 @@ on:
 
 jobs:
   called:
-    name: "Name of called job"
+    name: "Name of called job: ${{ matrix.container }} / ${{ matrix.suite}} / ${{ matrix.pkg }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:

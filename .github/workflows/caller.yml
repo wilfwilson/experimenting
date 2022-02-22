@@ -5,11 +5,6 @@ on:
 
 jobs:
   caller:
-    #strategy:
-    #  matrix:
-    #    container:
-    #      - master
-    #      - stable-4.11
     uses: wilfwilson/experimenting/.github/workflows/called.yml@master
     name: "Name of caller job"
     with:
