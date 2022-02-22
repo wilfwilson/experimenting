@@ -4,43 +4,12 @@ on:
   push:
 
 jobs:
-  job1:
-    name: job1 / ${{ matrix.option }}
-    runs-on: ubuntu-18.04
-    outputs:
-      matrix: ${{ steps.new.outputs.matrix }}
-    strategy:
-      fail-fast: false
-      matrix:
-        option:
-          - one
-          - two
-
-    steps:
-      - name: Set a matrix
-        id: new
-        run: |
-          MATRIX='{"thing":["gap-${{matrix.option}}","pkg-${{matrix.option}}"]}'
-          echo "Setting matrix: $MATRIX"
-          echo "::set-output name=matrix::$MATRIX"
-
-  job2:
-    name: job2 / ${{ matrix.thing }}
-    needs: job1
-    runs-on: ubuntu-18.04
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
-
-    steps:
-      - name: Read the value of the matrix
-        run: echo "${{ matrix.thing }}"
-
   gapcontainer:
     name: "Container job"
     runs-on: ubuntu-latest
     container: ghcr.io/gap-system/gap-docker-master:master
     steps:
       - run: pwd
-      - run: gap --version
+      - run: which gap
+      - run: /bin/sh -c "gap --version"
       - uses: actions/checkout@v2
