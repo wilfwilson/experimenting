@@ -6,7 +6,7 @@ on:
 jobs:
   caller:
     uses: ./.github/workflows/called.yml
-    name: "Name of caller job"
+    #name: "Name of caller job"
     with:
       container: >-
         ["master", "stable-4.11"]

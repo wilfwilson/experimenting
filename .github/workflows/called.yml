@@ -15,14 +15,14 @@ on:
 
 jobs:
   called:
-    name: "Name of called job: ${{ matrix.container }} / ${{ matrix.suite}} / ${{ matrix.pkg }}"
+    name: "Name of called job: ${{ matrix.container }} / ${{ matrix.suite }} / ${{ matrix.pkgs }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
         container: ${{ fromJson(inputs.container) }}
         suite:     ${{ fromJson(inputs.suite) }}
-        pkg:       ${{ fromJson(inputs.pkg) }}
+        pkgs:       ${{ fromJson(inputs.pkg) }}
     steps:
       - run: echo ${{ matrix.container }}
       - run: echo ${{ matrix.suite }}
-      - run: echo ${{ matrix.pkg }}
+      - run: echo ${{ matrix.pkgs }}
