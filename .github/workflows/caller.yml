@@ -1,11 +1,9 @@
-name: "Caller"
-
 on:
   push:
 
 jobs:
   caller:
-    uses: ./.github/workflows/called.yml@main
+    uses: wilfwilson/experimenting/.github/workflows/called.yml@master
     with:
       container: master
       test-suite: testinstall
