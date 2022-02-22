@@ -5,7 +5,7 @@ on:
 
 jobs:
   caller:
-    uses: wilfwilson/experimenting/.github/workflows/called.yml@master
+    uses: .github/workflows/called.yml@master
     name: "Name of caller job"
     with:
       container: >-
