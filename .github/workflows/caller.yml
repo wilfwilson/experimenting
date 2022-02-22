@@ -1,4 +1,4 @@
-name: "Hey"
+name: "Name of caller Workflow file"
 
 on:
   push:
@@ -11,9 +11,11 @@ jobs:
     #      - master
     #      - stable-4.11
     uses: wilfwilson/experimenting/.github/workflows/called.yml@master
-    name: "what"
+    name: "Name of caller job"
     with:
       container: >-
         ["master", "stable-4.11"]
-      suite: testinstall
-      pkg: digraphs
+      suite: >-
+        ["testinstall", "testbugfix", "teststandard"]
+      pkg: >-
+        ["no", "auto", "all"]

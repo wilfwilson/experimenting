@@ -1,11 +1,10 @@
-name: "Called"
+name: "Name of called Workflow file"
 
 on:
   workflow_call:
     inputs:
       container:
-        required: false
-        default: master
+        required: true
         type: string
       suite:
         required: true
@@ -16,12 +15,14 @@ on:
 
 jobs:
   called:
-    name: "Hey ${{ matrix.container }}"
+    name: "Name of called job"
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        container: ${{fromJson(inputs.container)}}
+        container: ${{ fromJson(inputs.container) }}
+        suite:     ${{ fromJson(inputs.suite) }}
+        pkg:       ${{ fromJson(inputs.pkg) }}
     steps:
       - run: echo ${{ matrix.container }}
-      - run: echo ${{ inputs.suite }}
-      - run: echo ${{ inputs.pkg }}
+      - run: echo ${{ matrix.suite }}
+      - run: echo ${{ matrix.pkg }}
