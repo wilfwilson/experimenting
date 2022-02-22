@@ -41,6 +41,6 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/gap-system/gap-docker-master:master
     steps:
-      - run: |
-          pwd
-          ls
+      - run: pwd
+      - run: gap --version
+      - uses: actions/checkout@v2
