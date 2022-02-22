@@ -10,6 +10,7 @@ jobs:
     container: ghcr.io/gap-system/gap-docker-master:master
     steps:
       - run: pwd
+      - run: printenv
       - run: which gap
-      - run: /bin/sh -c "gap --version"
+      - run: /home/gap/inst/gap-master/bin/gap.sh --version
       - uses: actions/checkout@v2
