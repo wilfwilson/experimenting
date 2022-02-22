@@ -21,7 +21,7 @@ jobs:
       matrix:
         container: ${{ fromJson(inputs.container) }}
         suite:     ${{ fromJson(inputs.suite) }}
-        pkgs:       ${{ fromJson(inputs.pkg) }}
+        pkgs:      ${{ fromJson(inputs.pkg) }}
     steps:
       - run: echo ${{ matrix.container }}
       - run: echo ${{ matrix.suite }}
