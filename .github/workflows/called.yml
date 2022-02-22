@@ -16,6 +16,7 @@ on:
 
 jobs:
   called:
+    name: "Hey ${{ matrix.container }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
