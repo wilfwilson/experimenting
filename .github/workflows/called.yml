@@ -4,7 +4,8 @@ on:
   workflow_call:
     inputs:
       container:
-        required: true
+        required: false
+        default: master
         type: string
       suite:
         required: true
@@ -16,7 +17,10 @@ on:
 jobs:
   called:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        container: ${{fromJson(inputs.container)}}
     steps:
-      - run: echo ${{ inputs.container }}
-      - run: echo ${{ inputs.test-suite }}
+      - run: echo ${{ matrix.container }}
+      - run: echo ${{ inputs.suite }}
       - run: echo ${{ inputs.pkg }}
