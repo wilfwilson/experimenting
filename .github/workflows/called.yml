@@ -1,0 +1,20 @@
+name: "Called"
+
+on:
+  workflow_call:
+    inputs:
+      container:
+        required: true
+        type: string
+      test-suite:
+      pkg:
+        required: true
+        type: string
+
+jobs:
+  called:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.container }}
+      - run: echo ${{ inputs.test-suite }}
+      - run: echo ${{ inputs.pkg }}

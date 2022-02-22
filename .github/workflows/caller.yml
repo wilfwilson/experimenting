@@ -1,0 +1,12 @@
+name: "Caller"
+
+on:
+  push:
+
+jobs:
+  caller:
+    uses: ./.github/workflows/called.yml@main
+    with:
+      container: master
+      test-suite: testinstall
+      pkg: digraphs
