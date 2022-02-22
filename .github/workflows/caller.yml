@@ -11,6 +11,7 @@ jobs:
     #      - master
     #      - stable-4.11
     uses: wilfwilson/experimenting/.github/workflows/called.yml@master
+    name: "what"
     with:
       container: >-
         ["master", "stable-4.11"]
