@@ -20,7 +20,7 @@ jobs:
       - name: Set a matrix
         id: new
         run: |
-          MATRIX='{"thing":["gap","pkg"]}'
+          MATRIX='{"thing":["gap-${{matrix.option}}","pkg-${{matrix.option}}"]}'
           echo "Setting matrix: $MATRIX"
           echo "::set-output name=matrix::$MATRIX"
 
