@@ -35,3 +35,12 @@ jobs:
     steps:
       - name: Read the value of the matrix
         run: echo "${{ matrix.thing }}"
+
+  gapcontainer:
+    name: "Container job"
+    runs-on: ubuntu-latest
+    container: ghcr.io/gap-system/gap-docker-master:master
+    steps:
+      - run: |
+          pwd
+          ls
