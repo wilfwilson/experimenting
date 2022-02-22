@@ -1,0 +1,37 @@
+name: "Dynamic matrix"
+
+on:
+  push:
+
+jobs:
+  job1:
+    name: job1 / ${{ matrix.option }}
+    runs-on: ubuntu-18.04
+    outputs:
+      matrix: ${{ steps.new.outputs.matrix }}
+    strategy:
+      fail-fast: false
+      matrix:
+        option:
+          - one
+          - two
+
+    steps:
+      - name: Set a matrix
+        id: new
+        run: |
+          MATRIX='{"thing":["gap","pkg"]}'
+          echo "Setting matrix: $MATRIX"
+          echo "::set-output name=matrix::$MATRIX"
+
+  job2:
+    name: job2 / ${{ matrix.thing }}
+    needs: job1
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
+
+    steps:
+      - name: Read the value of the matrix
+        run: echo "${{ matrix.thing }}"
