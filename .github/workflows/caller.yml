@@ -10,9 +10,8 @@ jobs:
         container:
           - master
           - stable-4.11
-    steps:
-      - uses: wilfwilson/experimenting/.github/workflows/called.yml@master
-        with:
-          container: ${{ matrix.container }}
-          suite: testinstall
-          pkg: digraphs
+    uses: wilfwilson/experimenting/.github/workflows/called.yml@master
+    with:
+      container: ${{ matrix.container }}
+      suite: testinstall
+      pkg: digraphs
