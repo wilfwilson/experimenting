@@ -1,0 +1,29 @@
+name: "Experiment"
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    name: "TODO"
+    runs-on: ubuntu-18.04
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - name: "TODO"
+        id: matrix
+        run: |
+          echo '::set-output name=matrix::{"include":[{"name":"wilf","age":"4"},{"name":"wilson","age":"5"}]}'
+
+  job2:
+    name: "${{ matrix.name }} / ${{ matrix.age }}"
+    needs: job1
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo "Hey!"
